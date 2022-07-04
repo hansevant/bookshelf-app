@@ -1,2 +1,3 @@
 # bookshelf-app
-Submission Dicoding
+Submission Dicoding built with Vanilla Javascript + Web Storage and Bootstrap for interface
+
