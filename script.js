@@ -58,10 +58,11 @@
   }
 
 
-  function saveData() {
+  function saveData(save) {
     if (isStorageExist()) {
       const parsed /* string */ = JSON.stringify(books);
       localStorage.setItem(STORAGE_KEY, parsed);
+      notify(save)
       document.dispatchEvent(new Event(SAVED_EVENT));
     }
   }
@@ -152,7 +153,9 @@
     books.push(bookObject);
   
     document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+
+    const save = 'add';
+    saveData(save);
   }
   
   function checkToComplete(bookId /* HTMLELement */) {
@@ -162,7 +165,9 @@
   
     bookTarget.isComplete = true;
     document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+
+    const save = 'check';
+    saveData(save);
   }
   
   function removeBook(bookId /* HTMLELement */) {
@@ -172,7 +177,9 @@
   
     books.splice(bookTarget, 1);
     document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+
+    const save = 'remove';
+    saveData(save);
   }
   
   function checkToIncomplete(bookId /* HTMLELement */) {
@@ -182,7 +189,9 @@
   
     bookTarget.isComplete = false;
     document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+
+    const save = 'uncheck';
+    saveData(save);
   }
 
   function searchBook(){
@@ -229,11 +238,29 @@ const alert = (message, type) => {
     ].join('')
   
     alertPlaceholder.append(wrapper)
+
+    setInterval(lost,5000)
+
+    function lost(){
+      wrapper.remove();
+    }
+  }
+
+  function notify(save){
+    if(save == 'add'){
+      alert('Buku Berhasil Masuk Rak!', 'success')
+    }else if(save == 'check'){
+      alert('Buku selesai dibaca!', 'info')
+    }else if(save == 'uncheck'){
+      alert('Buku pindah ke rak sebelah!', 'warning')
+    }else {
+      alert('buku dikeluarkan dari rak', 'danger')
+    }
   }
   
   document.addEventListener(SAVED_EVENT, () => {
-    // console.log('Data berhasil di perbaharui.');
-    alert('Data Berhasil Diperbaharui!', 'success')
+    console.log('Data berhasil di perbaharui.');
+
   });
   
   document.addEventListener(RENDER_EVENT, function () {
