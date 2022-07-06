@@ -107,14 +107,14 @@
     if (isComplete) {
       const checkButtonA = document.createElement('button');
       checkButtonA.classList.add('btn', 'btn-warning', 'btn-sm');
-      checkButtonA.innerText = 'Belum Selesai Baca';
+      checkButtonA.innerText = 'Belum Selesai Baca ⏪';
       checkButtonA.addEventListener('click', function () {
         checkToIncomplete(id);
       });
   
       const trashButton = document.createElement('button');
       trashButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ms-2');
-      trashButton.innerText = 'Hapus Buku';
+      trashButton.innerText = 'Hapus Buku 🪣';
       trashButton.addEventListener('click', function () {
         removeBook(id);
       });
@@ -124,14 +124,14 @@
   
       const checkButtonB = document.createElement('button');
       checkButtonB.classList.add('btn', 'btn-success', 'btn-sm');
-      checkButtonB.innerText = 'Selesai Baca';
+      checkButtonB.innerText = 'Selesai Baca ✅';
       checkButtonB.addEventListener('click', function () {
         checkToComplete(id);
       });
 
       const trashButton = document.createElement('button');
       trashButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ms-2');
-      trashButton.innerText = 'Hapus Buku';
+      trashButton.innerText = 'Hapus Buku 🪣';
       trashButton.addEventListener('click', function () {
         removeBook(id);
       });
