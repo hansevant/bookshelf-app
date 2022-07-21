@@ -195,12 +195,11 @@
   }
 
   function searchBook(){
-    const titleBook = document.getElementById('cari').value;
+    const titleBook = document.getElementById('cari').value.toLowerCase();
     const renderBook = document.querySelectorAll('.card-title')
 
     for (render of renderBook){
-        if (titleBook !== render.innerText){
-            console.log(render.innerText)
+        if (render.innerText.toLowerCase().includes(titleBook) === false){
             render.parentElement.remove();
         }
     }
